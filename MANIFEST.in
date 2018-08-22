@@ -1,0 +1,11 @@
+include AUTHORS CHANGELOG.rst README.rst LICENSE
+include Makefile
+
+graft contrib
+graft requirements
+graft tcms/locale
+graft tcms/static
+graft tcms/templates
+
+include docs/Makefile
+graft docs/source

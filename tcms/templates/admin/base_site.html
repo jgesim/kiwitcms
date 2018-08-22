@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% load i18n grp_tags %}
+
+{% block title %}{{ title }} | {% get_site_title %}{% endblock %}
+
+{% block blockbots %}
+    {{ block.super }}
+    {% include 'patternfly.html' %}
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/admin.css' %}" media="screen" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+
+    <script type="text/javascript" charset="utf-8">
+        grp.jQuery(document).ready(function() {
+            grp.jQuery("#change-history").addClass('grp-table');
+        });
+    </script>
+{% endblock %}
+
+{% block navigation %}
+    {% include 'navbar.html' %}
+{% endblock %}

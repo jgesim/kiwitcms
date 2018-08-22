@@ -1,0 +1,15 @@
+Django==2.1
+django-attachments>=1.3
+django-contrib-comments
+django-glrm
+django-grappelli
+django-modern-rpc
+django-report-builder
+django-simple-history
+django-uuslug
+django-vinaigrette
+# because of https://github.com/pycontribs/jira/issues/501
+jira==1.0.10
+Markdown
+python-bugzilla
+PyGithub

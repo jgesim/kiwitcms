@@ -1,0 +1,31 @@
+{% load attachments_tags %}
+
+<div class="mixbar">
+	{% if perms.attachments.add_attachment %}
+	<span class="tit">Add attachment</span>
+	<a href="{% url "plan-attachment" test_plan.plan_id %}" class="addlink">add</a>
+	{% endif %}
+</div>
+<table class="list" cellspacing="0" cellspan="0" width="100%">
+	<thead>
+		<tr>
+			<th align="left">File name</th>
+			<th align="left" width="20%">Submitter</th>
+			<th align="left" width="20%">Create date</th>
+			<th align="left" width="10%">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+                {% get_attachments_for test_plan as attachments_list %}
+		{% for attachment in attachments_list %}
+		<tr class="{% cycle 'odd' 'even' %}">
+                        <td><a href="{{ attachment.attachment_file.url }}">{{ attachment.filename }}</a></td>
+			<td>{{ attachment.creator }}</td>
+			<td>{{ attachment.created }}</td>
+                        <td>{% attachment_delete_link attachment %}</td>
+		</tr>
+		{% empty %}
+		<tr><td colspan="5" align="center"><span class="grey">No attachments</span></td></tr>
+		{% endfor %}
+	</tbody>
+</table>
